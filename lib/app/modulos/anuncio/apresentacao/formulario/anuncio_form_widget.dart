@@ -44,6 +44,7 @@ class _AnuncioFormWidgetState extends State<AnuncioFormWidget> {
                 )),
                 const SizedBox(height: 10),
                 TextFormField(
+                  key: const Key("titulo"),
                   initialValue: widget.anuncio.titulo,
                   decoration: _decoracao("Título"),
                   onSaved: (newValue) => widget.anuncio.titulo = newValue ?? "",
@@ -64,13 +65,13 @@ class _AnuncioFormWidgetState extends State<AnuncioFormWidget> {
                   height: 20,
                 ),
                 ElevatedButton(
-                    key: Key("btsalvar"),
+                    key: const Key("btsalvar"),
                     onPressed: () {
                       if (formKey.currentState?.validate() ?? false) {
                         provider.controlador.atualizar(context, widget.anuncio);
                       }
                     },
-                    child: Text("Salvar"))
+                    child: const Text("Salvar"))
               ],
             ),
           ),

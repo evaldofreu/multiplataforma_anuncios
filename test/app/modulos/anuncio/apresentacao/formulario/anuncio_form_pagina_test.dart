@@ -4,18 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('anuncio form pagina ...', (tester) async {
+  testWidgets('Anuncio Form valida titulo ...', (tester) async {
     var anuncio = Anuncio(
-      titulo: "Anúncio novo",
+      titulo: "",
     );
+    final botaoFinder = find.byKey(const Key("btsalvar")); // localiza o botão
+    final validacaoFinder = find.text("Digite um título para o anúncio.");
+
     await tester.pumpWidget(
         MaterialApp(home: AnuncioFormPagina(anuncio))); // lança o widget
-    final botao = find.byKey(const Key("btsalvar")); // localiza o botão
-    expect(botao, findsOneWidget); // verifica se o botão foi encontrado
-    await tester.press(botao);
+    expect(botaoFinder, findsOneWidget); // verifica se o botão foi encontrado
+    await tester.tap(botaoFinder);
     await tester.pumpAndSettle();
-    final validacao = find.textContaining("Digite");
-    expect(validacao, findsOneWidget,
+    expect(validacaoFinder, findsOneWidget,
         reason:
             "formulário permitindo titulo vazio"); // verifica se o botão foi encontrado
   });

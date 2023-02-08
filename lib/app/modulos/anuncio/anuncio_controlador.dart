@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'apresentacao/formulario/anuncio_form_provedor.dart';
 import 'dominio/anuncio.dart';
 import 'anuncio_casouso.dart';
 import 'apresentacao/detalhe/anuncio_detalhe_provedor.dart';
@@ -34,8 +35,8 @@ class AnuncioControlador {
   }
 
   atualizar(BuildContext context, Anuncio anuncio) async {
-    AnuncioDetalheProvider provider = AnuncioDetalheProvider.of(context)!;
-    await provider.anuncioCliente.atualizar(anuncio);
+    AnuncioFormProvider provider = AnuncioFormProvider.of(context)!;
+    await provider.repositorio.atualizar(anuncio);
     Navigator.of(context).pop();
   }
 }
