@@ -14,7 +14,6 @@ void main() {
     expect(botao, findsOneWidget); // verifica se o botão foi encontrado
     await tester.press(botao);
     await tester.pumpAndSettle();
-    await tester.pumpAndSettle();
     final validacao = find.textContaining("Digite");
     expect(validacao, findsOneWidget,
         reason:
