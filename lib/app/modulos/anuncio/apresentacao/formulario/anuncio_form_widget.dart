@@ -64,13 +64,13 @@ class _AnuncioFormWidgetState extends State<AnuncioFormWidget> {
                   height: 20,
                 ),
                 ElevatedButton(
-                    key: Key("btsalvar"),
+                    key: const Key("btsalvar"),
                     onPressed: () {
                       if (formKey.currentState?.validate() ?? false) {
                         provider.controlador.atualizar(context, widget.anuncio);
                       }
                     },
-                    child: Text("Salvar"))
+                    child: const Text("Salvar"))
               ],
             ),
           ),

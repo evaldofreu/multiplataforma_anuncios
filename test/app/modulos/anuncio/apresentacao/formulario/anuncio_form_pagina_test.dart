@@ -8,15 +8,17 @@ void main() {
     var anuncio = Anuncio(
       titulo: "Anúncio novo",
     );
+    final botaoFinder = find.byKey(const Key("btsalvar")); // localiza o botão
+    final validacaoFinder = find.textContaining("Digite", findRichText: true);
+
     await tester.pumpWidget(
         MaterialApp(home: AnuncioFormPagina(anuncio))); // lança o widget
-    final botao = find.byKey(const Key("btsalvar")); // localiza o botão
-    expect(botao, findsOneWidget); // verifica se o botão foi encontrado
-    await tester.press(botao);
+    expect(botaoFinder, findsOneWidget); // verifica se o botão foi encontrado
+    await tester.press(botaoFinder);
     await tester.pumpAndSettle();
-    final validacao = find.textContaining("Digite");
-    expect(validacao, findsOneWidget,
+
+    expect(validacaoFinder, findsOneWidget,
         reason:
-            "formulário permitindo titulo vazio"); // verifica se o botão foi encontrado
+            "formulário permitindo título vazio"); // verifica se o botão foi encontrado
   });
 }
