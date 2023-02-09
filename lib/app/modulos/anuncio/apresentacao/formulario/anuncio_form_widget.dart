@@ -44,6 +44,7 @@ class _AnuncioFormWidgetState extends State<AnuncioFormWidget> {
                 )),
                 const SizedBox(height: 10),
                 TextFormField(
+                  key: const Key("titulo"),
                   initialValue: widget.anuncio.titulo,
                   decoration: _decoracao("Título"),
                   onSaved: (newValue) => widget.anuncio.titulo = newValue ?? "",
