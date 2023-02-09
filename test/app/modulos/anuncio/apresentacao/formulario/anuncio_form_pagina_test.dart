@@ -6,22 +6,6 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   testWidgets('Anuncio Form valida titulo ...', (tester) async {
     var anuncio = Anuncio(
-<<<<<<< HEAD
-      titulo: "Anúncio novo",
-    );
-    final botaoFinder = find.byKey(const Key("btsalvar")); // localiza o botão
-    final validacaoFinder = find.textContaining("Digite", findRichText: true);
-
-    await tester.pumpWidget(
-        MaterialApp(home: AnuncioFormPagina(anuncio))); // lança o widget
-    expect(botaoFinder, findsOneWidget); // verifica se o botão foi encontrado
-    await tester.press(botaoFinder);
-    await tester.pumpAndSettle();
-
-    expect(validacaoFinder, findsOneWidget,
-        reason:
-            "formulário permitindo título vazio"); // verifica se o botão foi encontrado
-=======
       titulo: "", // titulo vazio
     ); // objeto novo
     final botaoFinder =
@@ -37,6 +21,5 @@ void main() {
     expect(validacaoFinder, findsOneWidget,
         reason:
             "formulário permitindo titulo vazio"); // verifica se a validação apareceu
->>>>>>> d1eca03e1ed2c4b101df6cf848232da14b7708d1
   });
 }
