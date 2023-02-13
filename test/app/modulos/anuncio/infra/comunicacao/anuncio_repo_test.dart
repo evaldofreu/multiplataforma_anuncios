@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 void main() {
   testWidgets('Respositorio de anúncios: obter.', (tester) async {
     var client = MockClient((request) => Future.value(http.Response(
-        '{"id": "2", "titulo": "Teste", "preco":0.0, "urlImagem":"https://encurtador.com.br/mCEQ0"}',
+        '{"id": "1", "titulo": "Teste", "preco":0.0, "urlImagem":"https://encurtador.com.br/mCEQ0"}',
         200)));
 
     var repo = AnuncioRepo(client);

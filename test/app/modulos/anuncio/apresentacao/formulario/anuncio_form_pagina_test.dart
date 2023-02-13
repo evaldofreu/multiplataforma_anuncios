@@ -12,7 +12,6 @@ void main() {
         find.byKey(const Key("btsalvar")); // localizador  do botão
     final validacaoFinder = find.text(
         "Digite um título para o anúncio."); // localizador da mensagem de validação
-
     await tester.pumpWidget(
         MaterialApp(home: AnuncioFormPagina(anuncio))); // abre o widget
     expect(botaoFinder, findsOneWidget); // verifica se o botão foi encontrado
