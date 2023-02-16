@@ -26,4 +26,10 @@ class AnuncioListaBloc extends Cubit<AnuncioListaEstado> {
     novoEstado.anuncios = [];
     emit(novoEstado);
   }
+
+  @override
+  void onError(Object error, StackTrace stackTrace) {
+    super.onError(error, stackTrace);
+    print(error);
+  }
 }

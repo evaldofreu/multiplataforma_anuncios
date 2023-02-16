@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'apresentacao/formulario/anuncio_form_provedor.dart';
 import 'dominio/anuncio.dart';
 import 'anuncio_casouso.dart';
-import 'apresentacao/detalhe/anuncio_detalhe_provedor.dart';
 import 'apresentacao/lista/anuncio_lista_bloc.dart';
 import 'apresentacao/lista/anuncio_lista_provedor.dart';
 
@@ -16,12 +15,13 @@ class AnuncioControlador {
   carregarAnuncios(BuildContext context) async {
     AnuncioCasoUso? repo = AnuncioListaProvedor.of(context)?.anuncioRepo;
     var bloc = context.read<AnuncioListaBloc>();
-    context.read<AnuncioListaBloc>().consultandoAnuncios();
+
+    bloc.consultandoAnuncios();
     try {
       var anuncios = await repo?.obterLista();
       bloc.atualizarAnuncios(anuncios ?? []);
     } catch (e) {
-      context.read<AnuncioListaBloc>().erro(e);
+      bloc.erro(e);
     }
   }
 

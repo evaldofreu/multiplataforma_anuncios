@@ -14,6 +14,7 @@ class AnuncioListaWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     AnuncioListaProvedor? provider = AnuncioListaProvedor.of(context);
     provider?.controlador.carregarAnuncios(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("App Anúncios"),
