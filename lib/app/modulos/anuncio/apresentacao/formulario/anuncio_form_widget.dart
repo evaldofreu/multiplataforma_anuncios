@@ -1,4 +1,8 @@
+import 'dart:io';
+
+import 'package:anuncios/app/modulos/anuncio/apresentacao/formulario/anuncio_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../dominio/anuncio.dart';
 
@@ -17,6 +21,7 @@ class _AnuncioFormWidgetState extends State<AnuncioFormWidget> {
   Widget build(BuildContext context) {
     var formKey = GlobalKey<FormState>();
     AnuncioFormProvider provider = AnuncioFormProvider.of(context)!;
+
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
@@ -29,19 +34,30 @@ class _AnuncioFormWidgetState extends State<AnuncioFormWidget> {
             child: Column(
               children: [
                 GestureDetector(
-                    child: Container(
-                  width: 200,
-                  height: 200,
-                  child: (widget.anuncio.urlImagem ?? "").isNotEmpty
-                      ? Image.network(
-                          widget.anuncio.urlImagem!,
-                          fit: BoxFit.cover,
-                        )
-                      : const Icon(
-                          Icons.photo_camera,
-                          size: 20,
-                        ),
-                )),
+                    onTap: () => provider.controlador.tirarFoto(context),
+                    child: BlocBuilder<AnuncioFormBloc, String>(
+                        builder: (context, snapshot) {
+                      if (snapshot.isNotEmpty) {
+                        widget.anuncio.urlImagem = snapshot;
+                      }
+                      return Container(
+                        width: 200,
+                        height: 200,
+                        child: (widget.anuncio.urlImagem ?? "").isNotEmpty
+                            ? widget.anuncio.urlImagem?.contains("https://") ??
+                                    false
+                                ? Image.network(
+                                    widget.anuncio.urlImagem!,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Image.file(File(widget.anuncio.urlImagem!),
+                                    fit: BoxFit.cover)
+                            : const Icon(
+                                Icons.photo_camera,
+                                size: 20,
+                              ),
+                      );
+                    })),
                 const SizedBox(height: 10),
                 TextFormField(
                   key: const Key("titulo"),
@@ -66,9 +82,13 @@ class _AnuncioFormWidgetState extends State<AnuncioFormWidget> {
                 ),
                 ElevatedButton(
                     key: const Key("btsalvar"),
-                    onPressed: () {
+                    onPressed: () async {
                       if (formKey.currentState?.validate() ?? false) {
-                        provider.controlador.atualizar(context, widget.anuncio);
+                        formKey.currentState?.save();
+                        await provider.controlador
+                            .atualizar(context, widget.anuncio);
+
+                        Navigator.of(context).pop();
                       }
                     },
                     child: const Text("Salvar"))

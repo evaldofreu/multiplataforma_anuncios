@@ -31,7 +31,10 @@ class AnuncioListaWidget extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => provider?.controlador.novoAnuncio(context),
+        onPressed: () async {
+          await provider?.controlador.novoAnuncio(context);
+          await provider?.controlador.carregarAnuncios(context);
+        },
         child: const Icon(Icons.add),
       ),
     );

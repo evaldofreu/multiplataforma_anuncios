@@ -45,5 +45,13 @@
 	<false/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+
+	<key>NSCameraUsageDescription</key>
+	<string>Usado para tirar foto dos produtos</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Usado para gravar comentários nos vídeos</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Usado para obter imagens dos produtos</string>
+
 </dict>
 </plist>

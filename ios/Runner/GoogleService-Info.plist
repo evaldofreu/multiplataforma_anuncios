@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>699175464839-4h5fkql5l8tml9qgvs6vj5ufm4uo5c7q.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.699175464839-4h5fkql5l8tml9qgvs6vj5ufm4uo5c7q</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAaFmqoECn2S2v6aWu8UhLO33-tcTntt4c</string>
+	<key>GCM_SENDER_ID</key>
+	<string>699175464839</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.anuncios</string>
+	<key>PROJECT_ID</key>
+	<string>senacanuncios</string>
+	<key>STORAGE_BUCKET</key>
+	<string>senacanuncios.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:699175464839:ios:649b00a4e3dfdd153fad22</string>
+</dict>
+</plist>

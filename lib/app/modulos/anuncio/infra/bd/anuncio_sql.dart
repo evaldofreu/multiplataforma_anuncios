@@ -21,7 +21,8 @@ class AnuncioSql extends AnuncioCasoUso {
     if (anuncio.id == null) {
       await _db.insert('anuncio', anuncio.toMap());
     } else {
-      await _db.update('anuncio', anuncio.toMap());
+      await _db.update('anuncio', anuncio.toMap(),
+          where: "id=?", whereArgs: [anuncio.id]);
     }
     _db.close();
   }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import '../../dominio/anuncio.dart';
@@ -9,15 +11,23 @@ class AnuncioListaItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Uri imagemCaminho = Uri.parse(anuncio.urlImagem ?? "");
     return ListTile(
         leading: ((anuncio.urlImagem ?? "").isEmpty)
             ? Icon(Icons.photo_size_select_actual_outlined)
-            : Image.network(
-                anuncio.urlImagem ?? "",
-                width: 50,
-                height: 50,
-                fit: BoxFit.cover,
-              ),
+            : imagemCaminho.isScheme("HTTP")
+                ? Image.network(
+                    anuncio.urlImagem ?? "",
+                    width: 50,
+                    height: 50,
+                    fit: BoxFit.cover,
+                  )
+                : Image.file(
+                    File(imagemCaminho.path),
+                    width: 50,
+                    height: 50,
+                    fit: BoxFit.cover,
+                  ),
         title: Text(anuncio.titulo),
         subtitle: Text("R\$ ${anuncio.preco.toStringAsFixed(2)}"),
         trailing: IconButton(

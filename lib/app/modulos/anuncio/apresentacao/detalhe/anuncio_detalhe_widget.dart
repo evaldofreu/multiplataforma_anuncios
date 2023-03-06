@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,10 +36,16 @@ class AnuncioDetalheWidget extends StatelessWidget {
                   Expanded(
                     child: ((state.anuncio?.urlImagem ?? "").isEmpty)
                         ? Icon(Icons.photo_size_select_actual_outlined)
-                        : Image.network(
-                            state.anuncio?.urlImagem ?? "",
-                            fit: BoxFit.cover,
-                          ),
+                        : Uri.parse(state.anuncio?.urlImagem ?? "")
+                                .isScheme("HTTP")
+                            ? Image.network(
+                                state.anuncio?.urlImagem ?? "",
+                                fit: BoxFit.cover,
+                              )
+                            : Image.file(
+                                File(state.anuncio?.urlImagem ?? ""),
+                                fit: BoxFit.cover,
+                              ),
                   ),
                   Text(
                     state.anuncio?.titulo ?? "",

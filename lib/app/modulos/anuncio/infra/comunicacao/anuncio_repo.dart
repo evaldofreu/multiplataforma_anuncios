@@ -22,19 +22,14 @@ class AnuncioRepo extends AnuncioCasoUso {
     return Future.value([
       Anuncio(
           id: "1",
-          titulo: "Óculos",
-          urlImagem: "https://encurtador.com.br/mCEQ0",
-          preco: 200.21),
-      Anuncio(
-          id: "2",
-          titulo: "Batom",
-          urlImagem: "https://encurtador.com.br/hlzZ4",
-          preco: 80.23),
+          titulo: "Óculos de sol",
+          urlImagem: "https://localhost/anuncios/mCEQ0.png",
+          preco: 820.21),
       Anuncio(
           id: "2",
           titulo: "Tênis",
-          urlImagem: "https://encurtador.com.br/lpuCT",
-          preco: 1000)
+          urlImagem: "https://localhost/anuncios/lpuCT.png",
+          preco: 250.0)
     ]);
   }
 
